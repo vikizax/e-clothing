@@ -20,9 +20,12 @@ import CheckoutPage from './pages/checkout/checkout.component';
 
 import Header from './components/header/header.component';
 
+// import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.utils';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 import { setCurrentUser } from './redux/user/user.action';
+
+// import { selectCollectionForPreview } from './redux/shop/shop.selector';
 
 class App extends React.Component {
 
@@ -30,6 +33,7 @@ class App extends React.Component {
 
   componentDidMount() {
 
+    // const { setCurrentUser, collectionsArray } = this.props;
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -51,6 +55,9 @@ class App extends React.Component {
       }
 
     });
+
+    // run this one time only to move local store data to firebase
+    // addCollectionAndDocuments('collections', collectionsArray.map(({ title, items }) => ({ title, items })))
   }
 
   componentWillUnmount() {
@@ -78,6 +85,7 @@ class App extends React.Component {
 
 const mapStateToProp = createStructuredSelector({
   currentUser: selectCurrentUser
+  // collectionsArray: selectCollectionForPreview
 });
 
 const mapDispatchToProps = dispatch => ({
