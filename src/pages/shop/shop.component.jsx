@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import CollectionsOverviewContainer from '../../components/collections-overview/collections-overview.container';
 import CollectionPageContainer from '../collection/collection.container';
 
-import { fetchCollectionStartAsync } from '../../redux/shop/shop.action';
+import { fetchCollectionStart } from '../../redux/shop/shop.action';
 // import { selectCollectionFetching, selectIsCollectionsLoaded } from '../../redux/shop/shop.selector';
 // import { selectIsCollectionsLoaded } from '../../redux/shop/shop.selector';
 
@@ -41,8 +41,8 @@ class ShopPage extends React.Component {
     //   this.setState({ loading: false });
     // });
 
-    const { fetchCollectionStartAsync } = this.props;
-    fetchCollectionStartAsync();
+    const { fetchCollectionStart } = this.props;
+    fetchCollectionStart();
   }
 
   componentWillUnmount() {
@@ -71,7 +71,7 @@ class ShopPage extends React.Component {
 //   // isCollectionsLoaded: selectIsCollectionsLoaded
 // });
 const mapDispatchToProps = dispatch => ({
-  fetchCollectionStartAsync: () => dispatch(fetchCollectionStartAsync())
+  fetchCollectionStart: () => dispatch(fetchCollectionStart())
 })
 
 export default connect(

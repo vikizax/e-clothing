@@ -21,15 +21,15 @@ export const fetchCollectionFailure = errorMessage => ({
     payload: errorMessage
 });
 
-export const fetchCollectionStartAsync = () => {
-    return dispatch => {
-        const collectionRef = firestore.collection('collections');
-        dispatch(fetchCollectionStart())
+// export const fetchCollectionStartAsync = () => {
+//     return dispatch => {
+//         const collectionRef = firestore.collection('collections');
+//         dispatch(fetchCollectionStart())
 
-        collectionRef.get()
-            .then(snaphot => {
-                const collectionsMap = convertCollectionSnapshotToMap(snaphot);
-                dispatch(fetchCollectionSuccess(collectionsMap));
-            }).catch(error => dispatch(fetchCollectionFailure(error.message)))
-    }
-};
+//         collectionRef.get()
+//             .then(snaphot => {
+//                 const collectionsMap = convertCollectionSnapshotToMap(snaphot);
+//                 dispatch(fetchCollectionSuccess(collectionsMap));
+//             }).catch(error => dispatch(fetchCollectionFailure(error.message)))
+//     }
+// };
