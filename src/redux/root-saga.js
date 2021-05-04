@@ -1,4 +1,4 @@
-import { all, call } from 'redux-saga';
+import { call, all } from 'redux-saga/effects';
 
 import { fetchCollectionsStart } from './shop/shop.sagas';
 
