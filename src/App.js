@@ -23,13 +23,11 @@ import Header from './components/header/header.component';
 // import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.utils';
 // import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
-import { setCurrentUser } from './redux/user/user.action';
-
 // import { selectCollectionForPreview } from './redux/shop/shop.selector';
 
 class App extends React.Component {
 
-  unsubscribeFromAuth = null;
+  // unsubscribeFromAuth = null;
 
   componentDidMount() {
 
@@ -61,7 +59,7 @@ class App extends React.Component {
   }
 
   componentWillUnmount() {
-    this.unsubscribeFromAuth();
+    // this.unsubscribeFromAuth();
   }
 
   render() {
@@ -88,8 +86,4 @@ const mapStateToProp = createStructuredSelector({
   // collectionsArray: selectCollectionForPreview
 });
 
-const mapDispatchToProps = dispatch => ({
-  setCurrentUser: user => dispatch(setCurrentUser(user))
-});
-
-export default connect(mapStateToProp, mapDispatchToProps)(App);
+export default connect(mapStateToProp, null)(App);
