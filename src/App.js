@@ -9,6 +9,7 @@ import { createStructuredSelector } from 'reselect';
 import './App.css';
 
 import { selectCurrentUser } from './redux/user/user.selector';
+import { checkUserSession } from './redux/user/user.action';
 
 import HomePage from './pages/homepage/homepage.component';
 
@@ -56,6 +57,9 @@ class App extends React.Component {
 
     // run this one time only to move local store data to firebase
     // addCollectionAndDocuments('collections', collectionsArray.map(({ title, items }) => ({ title, items })))
+
+    const { checkUserSession } = this.props;
+    checkUserSession();
   }
 
   componentWillUnmount() {
@@ -85,5 +89,8 @@ const mapStateToProp = createStructuredSelector({
   currentUser: selectCurrentUser
   // collectionsArray: selectCollectionForPreview
 });
+const mapDispatchToProp = dispatch => ({
+  checkUserSession: () => dispatch(checkUserSession())
+});
 
-export default connect(mapStateToProp, null)(App);
+export default connect(mapStateToProp, mapDispatchToProp)(App);
