@@ -1,5 +1,5 @@
 import { CartActionTypes } from './cart.types'
-
+// import UserActionType from '../user/user.types';
 import { addItemToCart, removeItemFromCart } from './cart.util';
 
 const INITIAL_STATE = {
@@ -32,6 +32,18 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 cartItems: removeItemFromCart(state.cartItems, action.payload)
             }
+
+        case CartActionTypes.CLEAR_CART:
+            return {
+                ...state,
+                cartItems: []
+            }
+
+        // case UserActionType.SIGN_OUT_SUCCESS:
+        //     return {
+        //         ...state,
+        //         cartItems: []
+        //     }
 
         default:
             return state;
